@@ -1,0 +1,51 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack-common.config.js"
+      },
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "mocha": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "expect": true,
+    "cy": true,
+    "Cypress": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ],
+    "before": 0,
+    "after": 0,
+    "linebreak-style": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "brace-style": "off",
+    "one-var-declaration-per-line": "off",
+    "one-var": "off",
+    "no-param-reassign": "off",
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "react/require-default-props": off,
+    "react/destructuring-assignment": off,
+    "lines-between-class-members": off
+  }
+}

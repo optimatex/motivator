@@ -1,0 +1,71 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-env",
+    "module:metro-react-native-babel-preset"
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    "@babel/plugin-transform-runtime"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "context": "./",
+            "webpackHotModuleReloading": true,
+            "generateScopedName": "[local]___[hash:base64:5]",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss",
+                "plugins": ["postcss-nested"]
+              }
+            },
+            "exclude": "/node_modules/"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "react-remove-properties",
+        [
+          "react-css-modules",
+          {
+            "context": "./",
+            "generateScopedName": "[local]___[hash:base64:5]",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss",
+                "plugins": ["postcss-nested"]
+              }
+            },
+            "exclude": "/node_modules/"
+          }
+        ]
+      ]
+    },
+    "test": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "context": "./",
+            "generateScopedName": "[local]",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss",
+                "plugins": ["postcss-nested"]
+              }
+            },
+            "exclude": "/node_modules/"
+          }
+        ]
+      ]
+    }
+  }
+}

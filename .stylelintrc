@@ -1,0 +1,40 @@
+{
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "at-rule-empty-line-before": null,
+    "at-rule-no-unknown": [ true, {
+      "ignoreAtRules": ["extend", "mixin", "include", "content", "for"]
+    }],
+    "block-opening-brace-newline-after": ["always", {"severity": "error"}],
+    "block-closing-brace-newline-before": ["always", {"severity": "error"}],
+    "color-hex-case": ["upper", {"severity": "error"}],
+    "color-hex-length": ["long", {"severity": "error"}],
+    "declaration-block-no-duplicate-properties": null,
+    "declaration-block-semicolon-newline-after": ["always", {"severity": "error"}],
+    "declaration-colon-space-after": ["always", {"severity": "error"}],
+    "declaration-empty-line-before": null,
+    "indentation": [2, {"severity": "error"}],
+    "length-zero-no-unit": [true, {"severity": "error"}],
+    "no-empty-source": null,
+    "number-leading-zero": ["never", {"severity": "error"}],
+    "number-no-trailing-zeros": [true, {"severity": "error"}],
+    "order/properties-alphabetical-order": true,
+    "property-case": null,
+    "rule-empty-line-before": ["always", {"severity": "error", "except": "first-nested"}],
+    "selector-max-id": [0, {"severity": "error"}],
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": ["tip", "tip-tip", "tooltip", "tags-input"]
+    }],
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["import", "export", "global"]
+    }],
+    "selector-pseudo-element-colon-notation": null,
+    "shorthand-property-no-redundant-values": null,
+    "value-list-comma-space-after": "always",
+    "scss/declaration-nested-properties": ["never", {"severity": "error"}]
+  }
+}

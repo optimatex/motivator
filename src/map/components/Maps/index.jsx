@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getMaps } from 'map/services/actions';
+import * as actions from 'map/services/actions';
 import * as mapSelectors from 'map/services/selectors';
-
+import FormHoc from '../Form';
+import List from './components/List';
 import './style.scss';
 
 export class Maps extends Component {
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     getMaps: PropTypes.func.isRequired,
+    addMap: PropTypes.func.isRequired,
+    list: PropTypes.arrayOf(
+      PropTypes.shape({
+        Text: PropTypes.string,
+      }),
+    ),
   };
 
   componentDidMount() {
@@ -19,18 +26,26 @@ export class Maps extends Component {
   }
 
   render() {
-    // const { isLoading, projects } = this.props;
+    const { isLoading, addMap, list } = this.props;
 
-    return <div className="">Maps</div>;
+    return (
+      <div className="">
+        <FormHoc onSubmit={addMap} />
+
+        {!isLoading ? <List array={list} /> : null}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({
   isLoading: mapSelectors.getIsLoadingList(state),
+  list: mapSelectors.getMapsList(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMaps: bindActionCreators(getMaps, dispatch),
+  getMaps: bindActionCreators(actions.getMaps, dispatch),
+  addMap: bindActionCreators(actions.addMap, dispatch),
 });
 
 export default connect(

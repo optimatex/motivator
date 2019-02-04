@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import store from 'app/store';
 import Base from 'app/components/Base';
 
-global.ROOT_URL = 'http://localhost:8080';
+global.ROOT_URL = 'http://localhost:3000';
 
 render(
   <Provider store={store}>

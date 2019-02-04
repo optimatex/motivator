@@ -46,6 +46,7 @@
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "react/require-default-props": off,
     "react/destructuring-assignment": off,
-    "lines-between-class-members": off
+    "lines-between-class-members": off,
+    "import/no-named-as-default-member": off
   }
 }

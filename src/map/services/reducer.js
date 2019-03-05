@@ -18,7 +18,10 @@ export default (state = initialState, action = {}) => {
         list: {
           ...state.list,
           isLoading: false,
-          data: action.payload.maps,
+          data: {
+            items: action.payload.maps,
+            count: action.payload.maps.length,
+          },
         },
       };
     case types.GET_MAPS_ERROR:

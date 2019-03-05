@@ -18,7 +18,9 @@ export class Form extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
+
     if (this.state.value) {
       this.props.onSubmit(this.state.value);
     }

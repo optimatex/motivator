@@ -4,10 +4,18 @@ import PropTypes from 'prop-types';
 class Item extends Component {
   static propTypes = {};
 
-  render() {
-    const { Text } = this.props;
+  handleRemove = () => {
+    this.props.onRemove(this.props.item._id);
+  };
 
-    return <div className="">{Text}</div>;
+  render() {
+    const { item } = this.props;
+
+    return (
+      <div className="">
+        {item.Text} <button onClick={this.handleRemove} />
+      </div>
+    );
   }
 }
 

@@ -14,6 +14,7 @@ export class Maps extends Component {
     isLoading: PropTypes.bool.isRequired,
     getMaps: PropTypes.func.isRequired,
     addMap: PropTypes.func.isRequired,
+    removeMap: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(
       PropTypes.shape({
         Text: PropTypes.string,
@@ -26,13 +27,13 @@ export class Maps extends Component {
   }
 
   render() {
-    const { isLoading, addMap, list } = this.props;
+    const { isLoading, addMap, removeMap, list } = this.props;
 
     return (
       <div className="">
         <FormHoc onSubmit={addMap} />
 
-        {!isLoading ? <List array={list} /> : null}
+        {!isLoading ? <List array={list} onRemove={removeMap} /> : '...Loading'}
       </div>
     );
   }
@@ -46,6 +47,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getMaps: bindActionCreators(actions.getMaps, dispatch),
   addMap: bindActionCreators(actions.addMap, dispatch),
+  removeMap: bindActionCreators(actions.removeMap, dispatch),
 });
 
 export default connect(

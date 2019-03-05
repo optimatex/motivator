@@ -16,7 +16,6 @@ export const getMaps = () => async dispatch => {
       },
     });
   } catch (error) {
-    console.log('%c error', 'color: #0087d4', error);
     await dispatch({
       type: types.GET_MAPS_ERROR,
       payload: {
@@ -42,10 +41,34 @@ export const addMap = str => async dispatch => {
         newMap: data,
       },
     });
+
+    await dispatch(getMaps());
   } catch (error) {
-    console.log('%c error', 'color: #0087d4', error);
     await dispatch({
       type: types.ADD_MAP_ERROR,
+      payload: {
+        error: error.message,
+      },
+    });
+  }
+};
+
+export const removeMap = id => async dispatch => {
+  try {
+    await dispatch({
+      type: types.REMOVE_MAP_REQUEST,
+    });
+
+    await api.removeMapRequest(id);
+
+    await dispatch({
+      type: types.REMOVE_MAP_SUCCESS,
+    });
+
+    await dispatch(getMaps());
+  } catch (error) {
+    await dispatch({
+      type: types.REMOVE_MAP_ERROR,
       payload: {
         error: error.message,
       },

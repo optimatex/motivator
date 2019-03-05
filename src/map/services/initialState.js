@@ -2,7 +2,10 @@ const initialState = {
   list: {
     isLoading: false,
     error: '',
-    data: [],
+    data: {
+      items: [],
+      count: 0,
+    },
   },
 };
 

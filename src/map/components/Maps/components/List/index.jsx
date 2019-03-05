@@ -6,11 +6,15 @@ import Item from '../Item';
 const List = props => (
   <div className="">
     {props.array.map(item => (
-      <Item item={item} />
+      <Item item={item} onRemove={props.onRemove} key={item._id} />
     ))}
   </div>
 );
-List.propTypes = {};
+
+List.propTypes = {
+  array: PropTypes.arrayOf(PropTypes.shape({})),
+  onRemove: PropTypes.func.isRequired,
+};
 List.defaultProps = {
   array: [],
 };
